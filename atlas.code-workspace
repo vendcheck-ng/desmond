@@ -1,0 +1,8 @@
+{
+  "folders": [
+    { "name": "atlas (root)", "path": "." },
+    { "name": "web app", "path": "apps/web" },
+    { "name": "database", "path": "supabase" }
+  ],
+  "settings": {}
+}

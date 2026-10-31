@@ -1,0 +1,206 @@
+/* The Working Atlas — shared tokens and base. */
+:root {
+  --paper: #f2efe7;
+  --panel: #ffffff;
+  --ink: #1d1d1a;
+  --ink-2: #4a4a44;
+  --stone: #d8d5c8;
+  --oxide: #b84a32;
+  --oxide-text: #a5402a;
+
+  --font-display: var(--font-display-face, Georgia), serif;
+  --font-sans: var(--font-sans-face), sans-serif;
+  --font-mono: var(--font-mono-face, ui-monospace), monospace;
+
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --step-2: clamp(1.5rem, 1.25rem + 1.2vw, 2.25rem);
+  --step-3: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+  --step-4: clamp(2.4rem, 1.5rem + 4vw, 5rem);
+  --step-5: clamp(2.75rem, 1.6rem + 5.5vw, 7rem);
+  --step-6: clamp(2.6rem, 0.8rem + 8.6vw, 9rem);
+
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --max: 90rem;
+  --header-h: 3.75rem;
+  --rule: 1px solid var(--ink);
+  --hair: 1px solid var(--stone);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: var(--step-0)/1.6 var(--font-sans);
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.public-site {
+  --paper: #0b0b0a;
+  --panel: #121211;
+  --ink: #f0f0ed;
+  --ink-2: #a4a49e;
+  --stone: #30302d;
+  --oxide: #c4c4be;
+  --oxide-text: #d7d7d2;
+  --font-display: var(--font-sans-face), sans-serif;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.5rem;
+  --step-3: 2rem;
+  --step-4: 2.5rem;
+  --step-5: 3.25rem;
+  --step-6: 3.75rem;
+  --gutter: 1.25rem;
+  --max: 76rem;
+  --rule: 1px solid #3a3a37;
+  --hair: 1px solid #252523;
+  min-height: 100vh;
+  color-scheme: dark;
+  background: var(--paper);
+  color: var(--ink);
+}
+.public-site .mono {
+  font-size: 0.7rem;
+}
+.public-site .display {
+  font-weight: 600;
+  letter-spacing: 0;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+a:hover {
+  color: var(--oxide-text);
+}
+:focus-visible {
+  outline: 3px solid var(--oxide-text);
+  outline-offset: 3px;
+}
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -4rem;
+  padding: 0.75rem 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  z-index: 100;
+}
+.skip-link:focus {
+  top: 0.5rem;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  font-optical-sizing: auto;
+}
+.em {
+  font-style: italic;
+  color: var(--oxide);
+}
+.lede {
+  font-size: var(--step-1);
+  max-width: 48ch;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+.media {
+  position: relative;
+  overflow: hidden;
+  background: var(--stone);
+  width: 100%;
+}
+.media:empty {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath d='M-2 2l4-4M0 14L14 0M12 16l4-4' stroke='%231D1D1A' stroke-opacity='.12'/%3E%3C/svg%3E");
+}
+
+button,
+.public-site .btn {
+  min-height: 44px;
+  min-width: 44px;
+}
+.public-site .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.2rem;
+  border: var(--rule);
+  border-radius: 999px;
+  text-decoration: none;
+  margin: 0.5rem 0.5rem 0 0;
+  transition:
+    background 0.25s var(--ease),
+    color 0.25s var(--ease),
+    transform 0.25s var(--ease);
+}
+.public-site .btn:hover {
+  background: var(--panel);
+  color: var(--ink);
+}
+.public-site .btn-primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+.public-site .btn-primary:hover {
+  background: var(--oxide-text);
+  border-color: var(--oxide-text);
+  color: var(--paper);
+}
+
+@media (min-width: 64rem) {
+  .public-site {
+    --gutter: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

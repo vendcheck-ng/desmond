@@ -1,0 +1,24 @@
+{
+  "name": "working-atlas",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=20.6"
+  },
+  "scripts": {
+    "dev": "npm run dev -w apps/web",
+    "build": "npm run build -w apps/web",
+    "start": "npm run start -w apps/web",
+    "lint": "npm run lint -w apps/web",
+    "typecheck": "npm run typecheck -w apps/web",
+    "test": "npm run test -w apps/web",
+    "create-admin": "node scripts/create-admin.mjs",
+    "setup": "npm install && node -e \"require('fs').existsSync('apps/web/.env.local')||require('fs').copyFileSync('apps/web/.env.example','apps/web/.env.local')\""
+  },
+  "description": "The Working Atlas \u2014 Desmond Odeyemi's portfolio (Next.js + Supabase monorepo)",
+  "devDependencies": {
+    "@supabase/supabase-js": "^2.45.0"
+  }
+}
