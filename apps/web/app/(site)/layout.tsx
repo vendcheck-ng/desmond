@@ -32,6 +32,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
           name={p?.display_name ?? "Desmond Odeyemi"}
           links={[
             { href: "/#work", label: "Work" },
+            { href: "/design", label: "Design" },
             { href: "/stack", label: "Stack" },
             { href: "/about", label: "About" },
             { href: "/#contact", label: "Contact" },

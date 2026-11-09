@@ -2,6 +2,7 @@ import { getProfile, getPublishedProjects } from "@/lib/data";
 import { DEFAULT_DESCRIPTION, SITE_NAME, absoluteUrl } from "@/lib/site";
 import { nameVariants, sameAsLinks } from "@/lib/seo";
 import { STATUS_LABEL } from "@/lib/labels";
+import { getDesigns } from "@/lib/designs";
 
 export const revalidate = 3600;
 
@@ -31,6 +32,7 @@ export async function GET() {
   lines.push("## Pages", "");
   lines.push(`- [Home](${absoluteUrl("/")}): introduction, products and contact`);
   lines.push(`- [About](${absoluteUrl("/about")}): background, experience, education and how ${name} works`);
+  lines.push(`- [Design](${absoluteUrl("/design")}): interface and product design work`);
   lines.push(`- [Stack](${absoluteUrl("/stack")}): tools and capabilities`, "");
 
   if (projects.length) {
@@ -39,6 +41,13 @@ export async function GET() {
       const bits = [pr.role && `Role: ${pr.role}`, `Status: ${STATUS_LABEL[pr.status]}`, pr.external_url && `Site: ${pr.external_url}`].filter(Boolean);
       lines.push(`- [${pr.title}](${absoluteUrl(`/work/${pr.slug}`)}): ${pr.summary ? `${pr.summary} ` : ""}${bits.join(" · ")}`);
     }
+    lines.push("");
+  }
+
+  const designs = getDesigns();
+  if (designs.length) {
+    lines.push("## Design work", "");
+    for (const d of designs) lines.push(`- [${d.title}](${absoluteUrl(`/design/${d.slug}`)}): ${d.summary} Type: ${d.kind}${d.year ? ` · Year: ${d.year}` : ""}`);
     lines.push("");
   }
 

@@ -1,0 +1,223 @@
+/* Design showcase: home section, /design and /design/[slug]. Uses the public-site tokens only. */
+
+/* ---------- cards ---------- */
+.design-section {
+  padding-bottom: 1rem;
+}
+.design-grid {
+  list-style: none;
+  margin: 0;
+  padding: 2rem 0 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.75rem 1.75rem;
+}
+.design-grid > li {
+  min-width: 0;
+}
+@media (min-width: 52rem) {
+  .design-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .design-grid[data-compact] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.design-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+.design-card:focus-visible {
+  outline: 2px solid var(--oxide-text);
+  outline-offset: 6px;
+  border-radius: 0.5rem;
+}
+.design-card-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--stone);
+  border-radius: 0.5rem;
+  background: var(--panel);
+}
+.design-card-media img {
+  object-fit: cover;
+  object-position: top;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .design-card-media img {
+    transition: transform 0.7s var(--ease);
+  }
+  .design-card:hover .design-card-media img,
+  .design-card:focus-visible .design-card-media img {
+    transform: scale(1.035);
+  }
+}
+.design-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.9rem;
+  margin: 1rem 0 0.5rem;
+  color: var(--ink-2);
+}
+.design-card-meta span:first-child {
+  color: var(--oxide-text);
+}
+.design-card-title {
+  margin: 0;
+  font-size: var(--step-2);
+  transition: color 0.2s;
+}
+.design-card:hover .design-card-title,
+.design-card:focus-visible .design-card-title {
+  color: var(--oxide-text);
+}
+.design-card-summary {
+  max-width: 46ch;
+  margin: 0.65rem 0 0;
+  color: var(--ink-2);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.design-card .tags {
+  margin-top: 0.85rem;
+}
+.design-card-cta {
+  margin-top: auto;
+  padding-top: 1rem;
+  color: var(--ink-2);
+  transition: color 0.2s;
+}
+.design-card:hover .design-card-cta {
+  color: var(--ink);
+}
+.design-more {
+  margin: 2rem 0 0;
+}
+
+/* ---------- /design ---------- */
+.design-head {
+  padding-top: 8rem;
+  padding-bottom: 1.5rem;
+}
+.design-title {
+  margin: 0.75rem 0 1rem;
+  font-size: var(--step-5);
+  max-width: 18ch;
+  text-wrap: balance;
+}
+.design-block {
+  padding-bottom: 4rem;
+}
+.design-subhead {
+  margin: 3rem 0 0;
+  padding-top: 1rem;
+  border-top: var(--rule);
+  color: var(--ink-2);
+}
+.design-cta {
+  padding-top: 4rem;
+  padding-bottom: 6rem;
+  border-top: var(--rule);
+}
+.design-cta h2 {
+  margin: 0 0 1rem;
+  font-size: var(--step-4);
+  max-width: 18ch;
+  text-wrap: balance;
+}
+
+/* ---------- /design/[slug] ---------- */
+.design-detail {
+  padding-bottom: 2rem;
+}
+.design-crumbs {
+  margin: 0;
+  color: var(--ink-2);
+}
+.design-crumbs a {
+  text-decoration: none;
+}
+.design-crumbs a:hover {
+  color: var(--ink);
+}
+.design-detail h1 {
+  margin: 0.75rem 0 1.25rem;
+  font-size: var(--step-6);
+  max-width: 16ch;
+  text-wrap: balance;
+}
+.design-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 1.25rem 1.5rem;
+  margin: 2rem 0 0;
+  padding-top: 1rem;
+  border-top: var(--rule);
+}
+.design-facts dt {
+  color: var(--oxide-text);
+}
+.design-facts dd {
+  margin: 0.25rem 0 0;
+  color: var(--ink-2);
+}
+.design-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+  max-width: 64ch;
+}
+.design-list li {
+  padding-bottom: 0.85rem;
+  border-bottom: var(--hair);
+}
+.design-gallery {
+  display: grid;
+  gap: 3.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.design-figure {
+  margin: 0;
+}
+.design-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--stone);
+  border-radius: 0.5rem;
+  background: #fff;
+}
+.design-figure figcaption {
+  margin-top: 0.75rem;
+  color: var(--ink-2);
+}
+.design-next {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 2rem 5rem;
+  border-top: var(--rule);
+}
+.design-next a {
+  text-decoration: none;
+}
+.design-next .display {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: var(--step-3);
+  transition: color 0.2s;
+}
+.design-next a:hover .display,
+.design-next a:focus-visible .display {
+  color: var(--oxide-text);
+}

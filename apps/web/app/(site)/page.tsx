@@ -7,6 +7,7 @@ import { mediaUrl } from "@/lib/media-url";
 import { parseEmphasis, stripEmphasis } from "@/lib/emphasis";
 import { AnimatedHeadline } from "@/components/AnimatedHeadline";
 import { ProjectIndex } from "@/components/ProjectIndex";
+import { DesignShowcase } from "@/components/DesignShowcase";
 import { Reveal } from "@/components/Reveal";
 import { CopyEmail } from "@/components/CopyEmail";
 import { JsonLd } from "@/components/JsonLd";
@@ -149,6 +150,8 @@ export default async function Home() {
       </section>
 
       <ProjectIndex projects={projects} periods={periods} />
+
+      <DesignShowcase />
 
       <section id="github" className="github shell" aria-labelledby="github-h">
         <div className="github-header">

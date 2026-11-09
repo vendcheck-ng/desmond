@@ -1,0 +1,114 @@
+{
+  "techsis": {
+    "cover": {
+      "width": 1200,
+      "height": 900
+    },
+    "og": {
+      "width": 1200,
+      "height": 630
+    },
+    "images": {
+      "01": {
+        "width": 1284,
+        "height": 902
+      },
+      "02": {
+        "width": 885,
+        "height": 1872
+      },
+      "03": {
+        "width": 1244,
+        "height": 1282
+      },
+      "04": {
+        "width": 1284,
+        "height": 1303
+      }
+    }
+  },
+  "zenova": {
+    "cover": {
+      "width": 1200,
+      "height": 900
+    },
+    "og": {
+      "width": 1200,
+      "height": 630
+    },
+    "images": {
+      "01": {
+        "width": 1284,
+        "height": 2024
+      },
+      "02": {
+        "width": 1284,
+        "height": 1577
+      },
+      "03": {
+        "width": 1260,
+        "height": 777
+      }
+    }
+  },
+  "cityboy": {
+    "cover": {
+      "width": 1200,
+      "height": 900
+    },
+    "og": {
+      "width": 1200,
+      "height": 630
+    },
+    "images": {
+      "01": {
+        "width": 1258,
+        "height": 2017
+      },
+      "02": {
+        "width": 1284,
+        "height": 2016
+      },
+      "03": {
+        "width": 1284,
+        "height": 1417
+      }
+    }
+  },
+  "wallet": {
+    "cover": {
+      "width": 1200,
+      "height": 900
+    },
+    "og": {
+      "width": 1200,
+      "height": 630
+    },
+    "images": {
+      "01": {
+        "width": 1284,
+        "height": 966
+      }
+    }
+  },
+  "jobspot": {
+    "cover": {
+      "width": 1200,
+      "height": 900
+    },
+    "og": {
+      "width": 1200,
+      "height": 630
+    },
+    "images": {
+      "01": {
+        "width": 1284,
+        "height": 1979
+      },
+      "02": {
+        "width": 1263,
+        "height": 1868
+      }
+    }
+  }
+}

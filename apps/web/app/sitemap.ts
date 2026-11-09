@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getProfile, getPublishedProjects } from "@/lib/data";
+import { getDesigns } from "@/lib/designs";
 import { absoluteUrl } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -11,6 +12,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: absoluteUrl("/"), lastModified: profileUpdated, changeFrequency: "monthly", priority: 1 },
     { url: absoluteUrl("/about"), lastModified: profileUpdated, changeFrequency: "yearly", priority: 0.7 },
     { url: absoluteUrl("/stack"), lastModified: profileUpdated, changeFrequency: "yearly", priority: 0.6 },
+    { url: absoluteUrl("/design"), changeFrequency: "yearly", priority: 0.8 },
+    ...getDesigns().map((d) => ({ url: absoluteUrl(`/design/${d.slug}`), changeFrequency: "yearly" as const, priority: 0.7 })),
     ...projects.map((p) => ({
       url: absoluteUrl(`/work/${p.slug}`),
       lastModified: p.updated_at,

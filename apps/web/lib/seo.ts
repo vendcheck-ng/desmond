@@ -4,6 +4,7 @@ import { mediaUrl } from "./media-url";
 import { EDUCATION } from "./cv";
 import { DEFAULT_CAPABILITIES } from "./capabilities";
 import type { Profile, Project, ProfileSocials } from "./types";
+import type { Design } from "./designs";
 
 /* ------------------------------------------------------------------ */
 /* Metadata                                                            */
@@ -202,6 +203,57 @@ export function buildProjectGraph(project: ProjectForLd, imageUrl: string | null
         creator: { "@type": "Person", "@id": PERSON_ID, name: personName, url: SITE_URL },
       },
       breadcrumb([["Home", "/"], [project.title, `/work/${project.slug}`]]),
+    ],
+  };
+}
+
+/** One project's page: the work itself (with every screen as an ImageObject) and its breadcrumb. */
+export function buildDesignGraph(design: Design, personName: string) {
+  const url = absoluteUrl(`/design/${design.slug}`);
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CreativeWork",
+        "@id": `${url}#design`,
+        url,
+        name: design.title,
+        description: design.summary,
+        genre: design.kind,
+        ...(design.year ? { dateCreated: design.year } : {}),
+        keywords: design.tags.join(", "),
+        image: design.images.map((img) => ({
+          "@type": "ImageObject",
+          contentUrl: absoluteUrl(img.src),
+          width: img.width,
+          height: img.height,
+          description: img.alt,
+        })),
+        creator: { "@type": "Person", "@id": PERSON_ID, name: personName, url: SITE_URL },
+      },
+      breadcrumb([["Home", "/"], ["Design", "/design"], [design.title, `/design/${design.slug}`]]),
+    ],
+  };
+}
+
+/** /design: a collection page listing every published project. */
+export function buildDesignIndexGraph(designs: Pick<Design, "slug" | "title">[]) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${absoluteUrl("/design")}#page`,
+        url: absoluteUrl("/design"),
+        name: "Design",
+        isPartOf: { "@id": WEBSITE_ID },
+        about: { "@id": PERSON_ID },
+        mainEntity: {
+          "@type": "ItemList",
+          itemListElement: designs.map((d, i) => ({ "@type": "ListItem", position: i + 1, name: d.title, url: absoluteUrl(`/design/${d.slug}`) })),
+        },
+      },
+      breadcrumb([["Home", "/"], ["Design", "/design"]]),
     ],
   };
 }
