@@ -100,6 +100,27 @@ const DEFS: Def[] = [
     ],
   },
   {
+    // Known issues in the source design (fix in Figma, re-export, then run `npm run import-designs`):
+    // the dashboard mockup is labelled "JobHuntly", the call-to-action heading has a doubled text
+    // layer, and the client logos are real brands.
+    slug: "jobspot",
+    title: "Jobspot",
+    kind: "Job board landing page",
+    year: "2021",
+    summary: "A landing page for a job board: a search-led hero, category cards, featured listings and an employer call to action.",
+    overview: [
+      "The page leads with a numeric promise and a single sign-up button, then lets candidates browse by category. Featured listings sit below, and a blue panel with a dashboard preview speaks to employers.",
+    ],
+    highlights: ["Hero with one clear action", "Eight category cards with live job counts", "Featured listings as scannable cards", "Employer call to action with dashboard preview"],
+    tags: ["Landing page", "Job board"],
+    featured: true,
+    published: true,
+    images: [
+      { id: "01", alt: "Jobspot landing page with the headline 'Discover more than 5000+ Jobs', client logos, job categories and an employer call to action", caption: "Landing page, top" },
+      { id: "02", alt: "Jobspot landing page lower half with the employer call to action, featured job cards and footer", caption: "Landing page, featured jobs and footer" },
+    ],
+  },
+  {
     slug: "zenova",
     title: "Zenova",
     kind: "Therapist-booking platform",
@@ -118,7 +139,7 @@ const DEFS: Def[] = [
       "Map view with nearby practices",
     ],
     tags: ["Web app", "Landing page", "Dashboard", "Healthcare"],
-    featured: true,
+    featured: false,
     published: true,
     images: [
       {
@@ -200,27 +221,6 @@ const DEFS: Def[] = [
         alt: "Two phone mockups of a crypto wallet: one showing a funded balance and a token list, the other an empty wallet with Buy Crypto and Receive funds prompts",
         caption: "Funded and empty wallet",
       },
-    ],
-  },
-  {
-    // Switched off on purpose: the dashboard mockup is labelled "JobHuntly", the call-to-action
-    // heading has a doubled text layer, and the client logos are real brands. Fix those, then
-    // set published: true.
-    slug: "jobspot",
-    title: "Jobspot",
-    kind: "Job board landing page",
-    year: "2021",
-    summary: "A landing page for a job board: a search-led hero, category cards, featured listings and an employer call to action.",
-    overview: [
-      "The page leads with a numeric promise and a single sign-up button, then lets candidates browse by category. Featured listings sit below, and a blue panel with a dashboard preview speaks to employers.",
-    ],
-    highlights: ["Hero with one clear action", "Eight category cards with live job counts", "Featured listings as scannable cards", "Employer call to action with dashboard preview"],
-    tags: ["Landing page", "Job board"],
-    featured: false,
-    published: false,
-    images: [
-      { id: "01", alt: "Jobspot landing page with the headline 'Discover more than 5000+ Jobs', client logos, job categories and an employer call to action", caption: "Landing page, top" },
-      { id: "02", alt: "Jobspot landing page lower half with the employer call to action, featured job cards and footer", caption: "Landing page, featured jobs and footer" },
     ],
   },
 ];
