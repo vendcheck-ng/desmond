@@ -4,6 +4,8 @@ import { BootSequence } from "@/components/BootSequence";
 import { MotionProvider } from "@/components/MotionProvider";
 import { SiteHeader } from "@/components/SiteHeader";
 import { DEFAULT_CAPABILITIES } from "@/lib/capabilities";
+import { AskMidey } from "@/components/AskMidey";
+import { isAskConfigured } from "@/lib/ask-core";
 
 export const revalidate = 60;
 
@@ -67,6 +69,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
           </div>
         </footer>
       </MotionProvider>
+      {isAskConfigured() && <AskMidey email={p?.email ?? null} />}
     </div>
   );
 }

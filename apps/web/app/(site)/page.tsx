@@ -8,6 +8,8 @@ import { parseEmphasis, stripEmphasis } from "@/lib/emphasis";
 import { AnimatedHeadline } from "@/components/AnimatedHeadline";
 import { ProjectIndex } from "@/components/ProjectIndex";
 import { DesignShowcase } from "@/components/DesignShowcase";
+import { ContributionGraph } from "@/components/ContributionGraph";
+import { getContributions } from "@/lib/github";
 import { Reveal } from "@/components/Reveal";
 import { CopyEmail } from "@/components/CopyEmail";
 import { JsonLd } from "@/components/JsonLd";
@@ -73,6 +75,7 @@ export default async function Home() {
   const openTo = profile?.open_to ?? [];
   const githubHandle = githubUsername(profile?.socials?.github);
   const githubUrl = githubHandle ? `https://github.com/${githubHandle}` : null;
+  const contributions = githubHandle ? await getContributions(githubHandle) : null;
   return (
     <>
       <JsonLd data={buildHomeGraph(profile, projects, profile?.seo_title || DEFAULT_TITLE)} />
@@ -167,7 +170,9 @@ export default async function Home() {
             </a>
           )}
         </div>
-        {githubHandle ? (
+        {githubHandle && contributions ? (
+          <ContributionGraph data={contributions} username={githubHandle} />
+        ) : githubHandle ? (
           <div className="github-panel">
             <div className="github-activity-label">
               <span className="mono">Contribution activity</span>
